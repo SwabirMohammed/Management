@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views as general_views
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import path
@@ -24,16 +23,16 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', general_views.register, name='users-registration'),
+    path('', views.register, name='users-registration'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='user-login'),
-    path('home/', general_views.home, name='my-home'),
+    path('home/', views.home, name='my-home'),
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='user-logout'),
-    path('add-product/', general_views.add_product, name='add-product'),
-    path('products/', general_views.view_products, name='products'),
-    path('delete-product/<id>', general_views.delete_product, name='delete-product'),
-    path('update-product/<id>', general_views.update_product, name='update-product'),
-    path('add-supplier/', general_views.add_supplier, name='add-supplier'),
-    path('delete-supplier/<id>', general_views.delete_supplier, name='delete-supplier'),
-    path('suppliers/', general_views.view_suppliers, name='suppliers'),
-    path('update-supplier/<id>', general_views.update_supplier, name='update-suppliers'),
+    path('add-product/', views.add_product, name='add-product'),
+    path('products/', views.view_products, name='products'),
+    path('delete-product/<id>', views.delete_product, name='delete-product'),
+    path('update-product/<id>', views.update_product, name='update-product'),
+    path('add-supplier/', views.add_supplier, name='add-supplier'),
+    path('delete-supplier/<id>', views.delete_supplier, name='delete-supplier'),
+    path('suppliers/', views.view_suppliers, name='suppliers'),
+    path('update-supplier/<id>', views.update_supplier, name='update-suppliers'),
 ]
